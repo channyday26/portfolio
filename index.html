@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Dimatulac | Web Development Supervisor & Senior Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Christian Dimatulac - Web Development Supervisor & Senior Full-Stack Developer specializing in Enterprise ERP, Fleet Management, Docker, and Claude AI Workflows.">
+    
+    <!-- CD Monogram Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6.5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Theme Initializer (Default: Dark Mode) -->
+    <script>
+        (function() {
+            try {
+                const saved = localStorage.getItem('portfolio_theme');
+                if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                }
+            } catch(e) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#06B6D4',
+                            indigo: '#6366F1',
+                            violet: '#8B5CF6',
+                            emerald: '#10B981',
+                            sky: '#0EA5E9',
+                            dark: '#080C14',
+                            cardDark: '#0D1527',
+                            surfaceDark: '#111B33'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        code: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    },
+                    animation: {
+                        'blob': 'blob 9s infinite',
+                        'blob-delayed': 'blob 9s infinite 3s',
+                        'blob-slow': 'blob 12s infinite 6s',
+                        'pulse-glow': 'pulseGlow 3.5s ease-in-out infinite',
+                        'float': 'float 5s ease-in-out infinite',
+                        'float-reverse': 'floatReverse 6s ease-in-out infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(35px, -45px) scale(1.1)' },
+                            '66%': { transform: 'translate(-30px, 25px) scale(0.95)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+                            '50%': { opacity: '0.85', transform: 'scale(1.04)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        floatReverse: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(8px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #080C14;
+            --text-color: #F8FAFC;
+            color-scheme: dark;
+        }
+
+        html.dark {
+            --bg-color: #080C14;
+            --text-color: #F8FAFC;
+            color-scheme: dark;
+        }
+
+        html.light {
+            --bg-color: #F8FAFC;
+            --text-color: #0F172A;
+            color-scheme: light;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color) !important;
+            color: var(--text-color) !important;
+            transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+            overflow-x: hidden;
+        }
+
+        .light body {
+            background-color: #F8FAFC !important;
+            color: #0F172A !important;
+        }
+
+        /* Glassmorphism Surface Base */
+        .glass-card {
+            background: rgba(13, 21, 39, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            border-radius: 1.25rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease;
+        }
+
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), inset 0 1px 0 #FFFFFF;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 20px 45px -15px rgba(6, 182, 212, 0.22);
+        }
+
+        .light .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Neomorphic Styled Buttons */
+        .neo-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            transition: all 0.25s ease;
+        }
+
+        .neo-btn:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.18) 0%, rgba(99, 102, 241, 0.18) 100%);
+            border-color: rgba(6, 182, 212, 0.45);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .light .neo-btn {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+            border: 1px solid rgba(203, 213, 225, 0.9);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05), inset 0 1px 0 #FFFFFF;
+            color: #1E293B;
+        }
+
+        .light .neo-btn:hover {
+            background: #F1F5F9;
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.15);
+            color: #06B6D4;
+        }
+
+        /* Pill Navigation / Filter Tabs */
+        .pill-tab {
+            border-radius: 9999px;
+            padding: 0.55rem 1.35rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .pill-tab.active {
+            background: linear-gradient(135deg, #06B6D4 0%, #6366F1 100%);
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .pill-tab.inactive {
+            background: rgba(255, 255, 255, 0.05);
+            color: #94A3B8;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .light .pill-tab.inactive {
+            background: rgba(241, 245, 249, 0.95);
+            color: #475569;
+            border: 1px solid rgba(226, 232, 240, 0.95);
+        }
+
+        .pill-tab.inactive:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #F8FAFC;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .light .pill-tab.inactive:hover {
+            background: rgba(226, 232, 240, 0.95);
+            color: #0F172A;
+        }
+
+        /* Ambient Dynamic Grid */
+        .tech-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .light .tech-grid {
+            background-image: 
+                linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+        }
+
+        /* Interactive Spotlight Cursor Highlight */
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: radial-gradient(
+                450px circle at var(--mouse-x, -200px) var(--mouse-y, -200px),
+                rgba(6, 182, 212, 0.35),
+                transparent 40%
+            );
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Animated Glowing Edge */
+        .aurora-glow {
+            background: linear-gradient(135deg, #06B6D4, #6366F1, #8B5CF6, #10B981);
+            background-size: 300% 300%;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080C14;
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06B6D4;
+        }
+        .light ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+        }
+        .light ::-webkit-scrollbar-thumb:hover {
+            background: #06B6D4;
+        }
+
+        /* Terminal Window */
+        .terminal-window {
+            background: #0B1120;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .light .terminal-window {
+            background: #0F172A;
+            border: 1px solid rgba(203, 213, 225, 0.3);
+        }
+
+        /* Floating chips around portrait */
+        .floating-badge {
+            animation: floatBadge 4.5s ease-in-out infinite;
+        }
+
+        .floating-badge-delayed {
+            animation: floatBadge 5s ease-in-out infinite 1.8s;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.8deg); }
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white relative">
+
+    <!-- Ambient Lighting / Glow Blobs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-32 -left-32 w-[450px] h-[450px] bg-cyan-500/15 dark:bg-cyan-500/20 rounded-full blur-[130px] animate-blob"></div>
+        <div class="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-indigo-500/15 dark:bg-indigo-600/20 rounded-full blur-[140px] animate-blob-delayed"></div>
+        <div class="absolute -bottom-20 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-[150px] animate-blob-slow"></div>
+        <div class="absolute inset-0 tech-grid opacity-75"></div>
+    </div>
+
+    <!-- FLOATING GLASS HEADER / NAVIGATION -->
+    <header class="fixed top-4 left-0 right-0 z-50 max-w-7xl mx-auto px-4 sm:px-6">
+        <nav class="glass-card px-5 py-3 rounded-2xl flex items-center justify-between border border-slate-200/90 dark:border-white/10 shadow-2xl backdrop-blur-2xl">
+            
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl aurora-glow p-[2px] shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-slate-900 dark:bg-slate-950 rounded-[10px] flex items-center justify-center">
+                        <span class="font-code font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 text-sm">CD</span>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                        Christian Dimatulac
+                    </span>
+                    <span class="text-[10px] font-code text-cyan-500 dark:text-cyan-400 flex items-center gap-1.5 font-medium">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        Web Dev Supervisor
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center gap-1 text-xs font-semibold text-slate-600 dark:text-slate-300">
+                <a href="#about" class="px-3.5 py-2 rounded-xl hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">About</a>
+                <a href="#experience" class="px-3.5 py-2 rounded-xl hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">Experience</a>
+                <a href="#projects" class="px-3.5 py-2 rounded-xl hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">Enterprise Systems</a>
+                <a href="#ai-lab" class="px-3.5 py-2 rounded-xl hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all flex items-center gap-1.5">
+                    <i class="fas fa-sparkles text-cyan-500 dark:text-cyan-400 text-[10px]"></i> AI Pipeline
+                </a>
+                <a href="#skills" class="px-3.5 py-2 rounded-xl hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">Skills</a>
+                <a href="#contact" class="px-3.5 py-2 rounded-xl hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/5 transition-all">Contact</a>
+            </div>
+
+            <!-- Controls: Theme Toggle & Contact Button -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Switcher -->
+                <button id="themeToggle" aria-label="Toggle Theme" class="w-9 h-9 rounded-xl neo-btn flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all cursor-pointer">
+                    <i id="themeIcon" class="fas fa-sun text-amber-400"></i>
+                </button>
+
+                <!-- Let's Talk CTA Button -->
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white text-xs font-bold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all transform hover:-translate-y-0.5">
+                    <i class="far fa-paper-plane text-[11px]"></i>
+                    <span>Connect</span>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" aria-label="Mobile Navigation" class="lg:hidden w-9 h-9 rounded-xl neo-btn flex items-center justify-center text-slate-700 dark:text-slate-200 cursor-pointer">
+                    <i class="fas fa-bars text-sm"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden mt-2 p-4 glass-card border border-white/10 dark:border-white/10 border-slate-200 rounded-2xl space-y-2 text-sm font-semibold text-slate-800 dark:text-slate-200">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 hover:text-cyan-500 dark:hover:text-cyan-400">About</a>
+            <a href="#experience" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 hover:text-cyan-500 dark:hover:text-cyan-400">Work Experience</a>
+            <a href="#projects" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 hover:text-cyan-500 dark:hover:text-cyan-400">Enterprise Systems</a>
+            <a href="#ai-lab" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 hover:text-cyan-500 dark:hover:text-cyan-400">Claude AI Dev Pipeline</a>
+            <a href="#skills" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 hover:text-cyan-500 dark:hover:text-cyan-400">Technical Skills</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 hover:text-cyan-500 dark:hover:text-cyan-400">Contact Christian</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10 pt-28 sm:pt-32">
+
+        <!-- ================= HERO SECTION ================= -->
+        <section id="hero" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left: Headline & Introduction -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    
+                    <!-- Availability Pill Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 text-xs font-bold tracking-wide backdrop-blur-md">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>Available for Web Architecture & Supervision Roles</span>
+                    </div>
+
+                    <!-- Main Catchy Title -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-slate-900 dark:text-white">
+                        Architecting Scalable Systems with 
+                        <span class="block bg-gradient-to-r from-cyan-500 via-sky-400 to-indigo-500 dark:from-cyan-400 dark:via-sky-300 dark:to-indigo-400 bg-clip-text text-transparent">
+                            Enterprise Precision & AI
+                        </span>
+                    </h1>
+
+                    <!-- Description -->
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        I am <span class="text-slate-900 dark:text-white font-bold">Christian Dimatulac</span>, a Web Development Supervisor & Senior Full-Stack Developer with <span class="text-cyan-600 dark:text-cyan-400 font-semibold">9+ years</span> in enterprise architecture. I lead the implementation of Hausland ERP, Fleet Logistics, Dockerized workflows, and automated pipelines powered by <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Claude AI</span>.
+                    </p>
+
+                    <!-- Interactive Quick-Contact Badges with 1-Click Copy -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-2 text-xs">
+                        <button onclick="copyToClipboard('christiand.chan26@gmail.com', this)" class="neo-btn px-3.5 py-2 rounded-xl flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors group cursor-pointer" title="Click to copy email">
+                            <i class="far fa-envelope text-cyan-500 dark:text-cyan-400"></i>
+                            <span>christiand.chan26@gmail.com</span>
+                            <i class="fas fa-copy text-[10px] text-slate-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400"></i>
+                        </button>
+                        <button onclick="copyToClipboard('+639757772512', this)" class="neo-btn px-3.5 py-2 rounded-xl flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors group cursor-pointer" title="Click to copy phone">
+                            <i class="fas fa-phone text-emerald-500 dark:text-emerald-400"></i>
+                            <span>+63 975 777 2512</span>
+                            <i class="fas fa-copy text-[10px] text-slate-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400"></i>
+                        </button>
+                        <span class="neo-btn px-3.5 py-2 rounded-xl flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                            <i class="fas fa-location-dot text-rose-500 dark:text-rose-400"></i>
+                            <span>Camias, Magalang, Pampanga</span>
+                        </span>
+                    </div>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span>Explore Enterprise Systems</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#ai-lab" class="neo-btn px-6 py-3.5 rounded-xl text-slate-800 dark:text-slate-200 font-bold text-sm hover:text-cyan-500 dark:hover:text-cyan-400 transition-all flex items-center gap-2">
+                            <i class="fas fa-microchip text-indigo-500 dark:text-indigo-400"></i>
+                            <span>Try AI Dev Pipeline</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Metrics Strip -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-200 dark:border-white/10">
+                        <div class="glass-card p-3.5 text-center">
+                            <div class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-400 dark:from-cyan-400 dark:to-teal-300">9+ Yrs</div>
+                            <div class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">IT & Dev Experience</div>
+                        </div>
+                        <div class="glass-card p-3.5 text-center">
+                            <div class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-cyan-500 dark:from-indigo-400 dark:to-cyan-400">7+ Yrs</div>
+                            <div class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Supervisory Role</div>
+                        </div>
+                        <div class="glass-card p-3.5 text-center">
+                            <div class="text-2xl font-extrabold text-emerald-500 dark:text-emerald-400">Enterprise</div>
+                            <div class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Hausland ERP & Fleet</div>
+                        </div>
+                        <div class="glass-card p-3.5 text-center">
+                            <div class="text-2xl font-extrabold text-purple-500 dark:text-purple-400">Claude AI</div>
+                            <div class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Workflow Automation</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Profile Photo Showcase Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        
+                        <!-- Ambient Rotating Border Aura -->
+                        <div class="absolute -inset-1.5 aurora-glow rounded-3xl blur-xl opacity-70 animate-pulse-glow"></div>
+                        
+                        <!-- Main Photo Card Container -->
+                        <div class="relative glass-card p-3 rounded-3xl border border-white/20 dark:border-white/20 shadow-2xl overflow-visible">
+                            
+                            <!-- Image Frame with 3:4 aspect ratio using Christian's actual photo -->
+                            <div class="relative rounded-2xl overflow-hidden aspect-[3/4] bg-slate-900 border border-white/10 group">
+                                <img src="assets/profile.jpg" alt="Christian Dimatulac - Web Development Supervisor" class="w-full h-full object-cover object-center filter brightness-[1.02] contrast-[1.02] transform group-hover:scale-105 transition-transform duration-700">
+                                
+                                <!-- Soft Bottom Vignette Gradient -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent pointer-events-none"></div>
+
+                                <!-- In-card Bottom Identification -->
+                                <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-900/85 backdrop-blur-md border border-white/10">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-xs font-bold text-white tracking-wide">Christian Dimatulac</p>
+                                            <p class="text-[11px] text-cyan-400 font-medium font-code">Supervisor @ Hausland Group</p>
+                                        </div>
+                                        <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                            <i class="fas fa-shield-halved text-sm"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Glass Badge 1: Top-Left (Supervision) -->
+                            <div class="absolute -top-4 -left-4 sm:-left-6 floating-badge z-20">
+                                <div class="glass-card px-4 py-2.5 rounded-2xl border border-white/20 dark:border-white/20 flex items-center gap-2.5 shadow-xl bg-slate-900/90 dark:bg-slate-900/90 backdrop-blur-xl">
+                                    <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Leadership</div>
+                                        <div class="text-xs font-extrabold text-white">7+ Yrs Supervisor</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Glass Badge 2: Top-Right (Claude AI) -->
+                            <div class="absolute -top-3 -right-4 sm:-right-6 floating-badge-delayed z-20">
+                                <div class="glass-card px-4 py-2.5 rounded-2xl border border-white/20 dark:border-white/20 flex items-center gap-2.5 shadow-xl bg-slate-900/90 dark:bg-slate-900/90 backdrop-blur-xl">
+                                    <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Specialization</div>
+                                        <div class="text-xs font-extrabold text-cyan-300">Claude AI Workflows</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Glass Badge 3: Bottom-Left (Docker & ERP) -->
+                            <div class="absolute -bottom-4 -left-2 sm:-left-4 floating-badge z-20">
+                                <div class="glass-card px-4 py-2 rounded-2xl border border-white/20 dark:border-white/20 flex items-center gap-2 shadow-xl bg-slate-900/90 dark:bg-slate-900/90 backdrop-blur-xl">
+                                    <div class="w-6 h-6 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs">
+                                        <i class="fab fa-docker"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-white">Docker CI/CD & ERP</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= EXECUTIVE BENTO GRID (ABOUT & STRENGTHS) ================= -->
+        <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-500 dark:text-cyan-400 font-code">Core Philosophy & Impact</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Executive Summary & Architectural DNA</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-3">Synthesizing senior-level engineering rigor, human leadership, and next-generation AI workflows.</p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Bento 1: Large Span (Supervisory Leadership) -->
+                <div class="glass-card spotlight-card p-8 md:col-span-2 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500/20 to-indigo-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-500 dark:text-cyan-400 text-xl">
+                            <i class="fas fa-users-gear"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Engineering Leadership & Operations</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Serving as Web Development Supervisor for the <strong class="text-slate-900 dark:text-white">Hausland Group of Companies</strong>, I direct technical strategy, resource planning, and development sprints for enterprise web applications. My focus balances high code standards with rapid, resilient business execution.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-slate-200 dark:border-white/10 text-xs">
+                        <div>
+                            <span class="text-slate-500 dark:text-slate-400 block font-medium">Core Responsibilities</span>
+                            <span class="text-slate-900 dark:text-white font-bold mt-1 block">Sprint Planning, Arch Review, Mentorship</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 dark:text-slate-400 block font-medium">Enterprise Scope</span>
+                            <span class="text-cyan-600 dark:text-cyan-400 font-bold mt-1 block">Cross-Company Deployments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento 2: Claude AI Integration -->
+                <div class="glass-card spotlight-card p-8 flex flex-col justify-between bg-indigo-50/60 dark:bg-gradient-to-b dark:from-indigo-950/30 dark:to-slate-900/60">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-500 dark:text-indigo-400 text-xl">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Claude AI Automation</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Pioneered internal dev workflows using Claude LLMs, automated prompt chaining, and AI-assisted code refactoring—boosting team velocity by over 40%.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 flex items-center gap-2 text-indigo-500 dark:text-indigo-400 text-xs font-semibold">
+                        <i class="fas fa-bolt text-xs"></i>
+                        <span>Automated Dev Pipelines</span>
+                    </div>
+                </div>
+
+                <!-- Bento 3: Containerization & DevOps -->
+                <div class="glass-card spotlight-card p-8 flex flex-col justify-between bg-cyan-50/60 dark:bg-gradient-to-b dark:from-cyan-950/30 dark:to-slate-900/60">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-500 dark:text-cyan-400 text-xl">
+                            <i class="fab fa-docker"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Docker Infrastructure</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Containerized enterprise systems across Windows Server and Linux environments, ensuring flawless staging parity and rapid zero-drift deployments.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 flex items-center gap-2 text-cyan-600 dark:text-cyan-400 text-xs font-semibold">
+                        <i class="fas fa-check-double text-xs"></i>
+                        <span>Zero Environment Drift</span>
+                    </div>
+                </div>
+
+                <!-- Bento 4: Mission-Critical Enterprise ERP & Fleet (Span 2) -->
+                <div class="glass-card spotlight-card p-8 md:col-span-2 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-500 dark:text-emerald-400 text-xl">
+                            <i class="fas fa-cubes-stacked"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Mission-Critical Enterprise Platforms</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Architected and deployed Hausland’s custom ERP, real-time Fleet Management Platform, Health & DTR verification portals, and automated MIS asset tracking systems. Built to withstand continuous daily operations with 99.9% uptime.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-300 text-xs font-code font-semibold">Hausland ERP</span>
+                        <span class="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-300 text-xs font-code font-semibold">Fleet Logistics</span>
+                        <span class="px-3 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-300 text-xs font-code font-semibold">Remote DTR Portal</span>
+                        <span class="px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-600 dark:text-purple-300 text-xs font-code font-semibold">MIS Ticket Engine</span>
+                    </div>
+                </div>
+
+                <!-- Bento 5: Full-Stack Engineering Rigor (Span 2) -->
+                <div class="glass-card spotlight-card p-8 md:col-span-2 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-500 dark:text-purple-400 text-xl">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Full-Stack Engineering Rigor</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Fluent across the entire stack: from intuitive React and Tailwind user interfaces to robust PHP and Node backend logic, normalized MySQL and PostgreSQL relational design, and Electron desktop tools.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-200 dark:border-white/10 text-xs font-code text-slate-500 dark:text-slate-400">
+                        <span>React • Next • PHP • Docker • SQL</span>
+                        <span class="text-emerald-500 dark:text-emerald-400 font-bold"><i class="fas fa-circle-check"></i> Enterprise Grade</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= INTERACTIVE CLAUDE AI DEV PIPELINE SANDBOX ================= -->
+        <section id="ai-lab" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="glass-card p-6 sm:p-10 border border-indigo-500/30 shadow-2xl relative overflow-hidden bg-slate-900/95 dark:bg-gradient-to-br dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 text-white">
+                
+                <!-- Background Ambient Neon Glow -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left: Pipeline Description & Interactive Triggers -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-bold font-code">
+                            <i class="fas fa-sparkles text-cyan-400"></i>
+                            <span>Interactive AI Workflow Simulator</span>
+                        </div>
+
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+                            See How I Integrate <span class="text-indigo-400">Claude AI</span> in Daily Dev Workflows
+                        </h2>
+
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            In enterprise supervisory environments, AI is an automated multiplier. Click any operational scenario below to simulate how my prompt pipelines generate schema optimizations, Docker files, and dispatch algorithms:
+                        </p>
+
+                        <!-- Presets Selector -->
+                        <div class="space-y-2.5" id="aiPresets">
+                            <button data-scenario="erp" class="ai-btn w-full text-left p-3 rounded-xl neo-btn flex items-center justify-between border border-cyan-500/40 bg-cyan-500/10 text-xs font-semibold text-white cursor-pointer">
+                                <span class="flex items-center gap-2.5">
+                                    <i class="fas fa-database text-cyan-400"></i>
+                                    <span>ERP Database Index & Query Optimization</span>
+                                </span>
+                                <i class="fas fa-play text-[10px] text-cyan-400"></i>
+                            </button>
+
+                            <button data-scenario="fleet" class="ai-btn w-full text-left p-3 rounded-xl neo-btn flex items-center justify-between text-xs font-semibold text-slate-300 hover:text-white cursor-pointer">
+                                <span class="flex items-center gap-2.5">
+                                    <i class="fas fa-truck-fast text-emerald-400"></i>
+                                    <span>Fleet Preventative Maintenance Routing</span>
+                                </span>
+                                <i class="fas fa-play text-[10px] text-slate-500"></i>
+                            </button>
+
+                            <button data-scenario="docker" class="ai-btn w-full text-left p-3 rounded-xl neo-btn flex items-center justify-between text-xs font-semibold text-slate-300 hover:text-white cursor-pointer">
+                                <span class="flex items-center gap-2.5">
+                                    <i class="fab fa-docker text-blue-400"></i>
+                                    <span>Multi-Stage PHP/React Docker Configuration</span>
+                                </span>
+                                <i class="fas fa-play text-[10px] text-slate-500"></i>
+                            </button>
+
+                            <button data-scenario="mis" class="ai-btn w-full text-left p-3 rounded-xl neo-btn flex items-center justify-between text-xs font-semibold text-slate-300 hover:text-white cursor-pointer">
+                                <span class="flex items-center gap-2.5">
+                                    <i class="fas fa-ticket text-amber-400"></i>
+                                    <span>MIS Automated Ticket Triage & Queue Dispatch</span>
+                                </span>
+                                <i class="fas fa-play text-[10px] text-slate-500"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Terminal Simulator Output -->
+                    <div class="lg:col-span-7">
+                        <div class="terminal-window p-4 sm:p-6 border border-white/10 shadow-2xl">
+                            <!-- Window Top Bar -->
+                            <div class="flex items-center justify-between pb-4 border-b border-white/10 text-xs font-code">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                                    <span class="ml-2 text-slate-400">christian@hausland-claude-pipeline: ~</span>
+                                </div>
+                                <span id="pipelineStatus" class="text-cyan-400 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                                    Claude 3.5 Ready
+                                </span>
+                            </div>
+
+                            <!-- Terminal Content Body -->
+                            <div class="pt-4 space-y-3 font-code text-xs leading-relaxed min-h-[260px]">
+                                <div class="text-slate-400">
+                                    <span class="text-emerald-400">$</span> claude-pipeline --trigger <span id="terminalCommand" class="text-cyan-300">erp-query-optimizer</span> --env production
+                                </div>
+                                
+                                <div id="terminalStream" class="text-slate-200 bg-slate-950/70 p-4 rounded-xl border border-white/5 whitespace-pre-wrap font-code text-[11px] leading-5 text-cyan-100">
+-- [HAUSLAND ERP QUERY OPTIMIZATION ENGINE] --
+Target Table: erp_inventory_ledger (850,000+ records)
+Bottleneck: Full table scan during cross-department valuation audits.
+
+OPTIMIZED COMPOSITE INDEX CREATED:
+CREATE INDEX idx_ledger_dept_date_status 
+ON erp_inventory_ledger (department_id, audit_date DESC, status_id) 
+INCLUDE (quantity, unit_cost);
+
+Claude AI Analysis:
+✓ Query latency reduced: 4.8s -> 42ms (-99.1%)
+✓ Buffer pool contention cleared across Hausland ERP cluster
+✓ Execution verified via EXPLAIN ANALYZE; zero table lockups.
+                                </div>
+
+                                <div class="flex justify-between items-center text-[10px] text-slate-500 pt-2 border-t border-white/5">
+                                    <span>Latency: <strong class="text-cyan-400">42ms</strong></span>
+                                    <span>Tokens: <strong class="text-indigo-400">485 in / 210 out</strong></span>
+                                    <span>Verified by: <strong class="text-slate-300">Christian Dimatulac</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= FEATURED ENTERPRISE SYSTEMS ================= -->
+        <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-500 dark:text-cyan-400 font-code">Enterprise Systems & Web Platforms</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Mission-Critical Software Deployed</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-3">Enterprise systems, public web platforms, and automated pipelines engineered and deployed.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center flex-wrap gap-2.5 mb-12" id="projectFilters">
+                <button data-filter="all" class="pill-tab active cursor-pointer">All Systems</button>
+                <button data-filter="enterprise" class="pill-tab inactive cursor-pointer">Enterprise Solutions</button>
+                <button data-filter="web" class="pill-tab inactive cursor-pointer">Web & Cloud Platforms</button>
+                <button data-filter="internal" class="pill-tab inactive cursor-pointer">Internal Portals</button>
+                <button data-filter="ai" class="pill-tab inactive cursor-pointer">AI & Automation</button>
+                <button data-filter="infra" class="pill-tab inactive cursor-pointer">DevOps & Infra</button>
+            </div>
+
+            <!-- Systems Grid -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated with cards -->
+            </div>
+
+        </section>
+
+
+        <!-- ================= WORK EXPERIENCE TIMELINE ================= -->
+        <section id="experience" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-500 dark:text-cyan-400 font-code">Career Evolution</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Work Experience & Leadership Milestones</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-3">From hands-on software development to enterprise supervisory leadership.</p>
+            </div>
+
+            <!-- Sleek Glowing Timeline -->
+            <div class="relative border-l-2 border-slate-300 dark:border-slate-800 ml-4 md:ml-36 space-y-12">
+                
+                <!-- Role 1: Hausland Group (Supervisor) -->
+                <div class="relative pl-6 md:pl-10 group">
+                    <!-- Glowing Node -->
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-400 ring-4 ring-slate-100 dark:ring-slate-900 shadow-lg shadow-cyan-400/50"></div>
+                    <div class="md:absolute md:-left-40 md:top-1 text-xs font-bold font-code text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-2 md:mb-0">
+                        Jul 2017 – Present
+                    </div>
+
+                    <div class="glass-card spotlight-card p-6 sm:p-8 border-cyan-500/30">
+                        <div class="flex flex-wrap justify-between items-start gap-3 mb-4">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Web Development Supervisor & Senior Full-Stack Developer</h3>
+                                <p class="text-sm font-bold text-cyan-600 dark:text-cyan-400 mt-0.5">Hausland Group of Companies</p>
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-300">
+                                <i class="fas fa-crown text-[10px] mr-1 text-amber-400"></i> Promoted to Supervisor
+                            </span>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4 leading-relaxed font-medium">
+                            Supervising web development operations, system architecture, and technology rollouts across all member enterprises within the Hausland Group.
+                        </p>
+
+                        <div class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-cyan-500 dark:text-cyan-400 mt-1 text-xs shrink-0"></i>
+                                <span><strong class="text-slate-900 dark:text-white">ERP Leadership:</strong> Led full lifecycle implementation of the Hausland ERP system—integrating departmental accounting, procurement, and project tracking.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-cyan-500 dark:text-cyan-400 mt-1 text-xs shrink-0"></i>
+                                <span><strong class="text-slate-900 dark:text-white">Fleet Logistics Platform:</strong> Engineered an end-to-end Fleet Management System to monitor fleet utilization, maintenance alerts, fuel audits, and driver dispatching.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-cyan-500 dark:text-cyan-400 mt-1 text-xs shrink-0"></i>
+                                <span><strong class="text-slate-900 dark:text-white">Health & DTR Systems:</strong> Architected digitized health declaration portal and remote Daily Time Record (DTR) attendance verification systems.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-cyan-500 dark:text-cyan-400 mt-1 text-xs shrink-0"></i>
+                                <span><strong class="text-slate-900 dark:text-white">Docker CI/CD:</strong> Standardized multi-environment deployments using Docker containers, ensuring rock-solid consistency across test, staging, and production.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-cyan-500 dark:text-cyan-400 mt-1 text-xs shrink-0"></i>
+                                <span><strong class="text-slate-900 dark:text-white">Claude AI Workflow Integration:</strong> Integrated Claude LLM pipelines into internal developer workflows for prompt engineering, automated code review, and automated MIS tech support ticketing.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-cyan-500 dark:text-cyan-400 mt-1 text-xs shrink-0"></i>
+                                <span><strong class="text-slate-900 dark:text-white">MIS Portal:</strong> Centralized automated hardware asset inventory, helpdesk ticketing, and queuing systems.</span>
+                            </div>
+                        </div>
+
+                        <!-- Tech tags -->
+                        <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-slate-200 dark:border-white/10">
+                            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 text-[11px] font-code text-cyan-600 dark:text-cyan-300 font-semibold">Leadership</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 text-[11px] font-code text-cyan-600 dark:text-cyan-300 font-semibold">ERP Implementation</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 text-[11px] font-code text-cyan-600 dark:text-cyan-300 font-semibold">Fleet Logistics</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 text-[11px] font-code text-cyan-600 dark:text-cyan-300 font-semibold">Claude AI</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 text-[11px] font-code text-cyan-600 dark:text-cyan-300 font-semibold">Docker</span>
+                            <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800/80 text-[11px] font-code text-cyan-600 dark:text-cyan-300 font-semibold">React & PHP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role 2: ICT Teacher -->
+                <div class="relative pl-6 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-slate-100 dark:ring-slate-900"></div>
+                    <div class="md:absolute md:-left-40 md:top-1 text-xs font-bold font-code text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 md:mb-0">
+                        Apr 2016 – Apr 2017
+                    </div>
+
+                    <div class="glass-card spotlight-card p-6 sm:p-8">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">ICT Teacher & Computer Lab Supervisor</h3>
+                                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Christian Vision Academy Foundation</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Education & Infrastructure</span>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside mt-3">
+                            <li>Delivered computer science and information technology curricula, instructing secondary students in logic and web principles.</li>
+                            <li>Maintained computer laboratory networking, software installation images, and hardware uptime.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 3: PSA -->
+                <div class="relative pl-6 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-slate-100 dark:ring-slate-900"></div>
+                    <div class="md:absolute md:-left-40 md:top-1 text-xs font-bold font-code text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 md:mb-0">
+                        Jun 2015 – Jan 2016
+                    </div>
+
+                    <div class="glass-card spotlight-card p-6 sm:p-8">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Enumerator / Data Collector</h3>
+                                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Philippine Statistics Authority (PSA)</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Government Statistics</span>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside mt-3">
+                            <li>Conducted rigorous field enumeration, household census data collection, and statistical auditing under PSA standards.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 4: Cloudstaff -->
+                <div class="relative pl-6 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-slate-100 dark:ring-slate-900"></div>
+                    <div class="md:absolute md:-left-40 md:top-1 text-xs font-bold font-code text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 md:mb-0">
+                        May 2014 – Sep 2014
+                    </div>
+
+                    <div class="glass-card spotlight-card p-6 sm:p-8">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Associate Software Engineer (Intern)</h3>
+                                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400">Cloudstaff Inc.</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Software Engineering</span>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside mt-3">
+                            <li>Collaborated with senior software architects on mobile and enterprise software testing and delivery in an agile setting.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= TECHNICAL SKILLS & STACK ================= -->
+        <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-500 dark:text-cyan-400 font-code">Competency Matrix</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Technical Skills & Technology Arsenal</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-3">Specialized across artificial intelligence, full-stack systems, infrastructure, and team management.</p>
+            </div>
+
+            <!-- Skill Filter Tabs -->
+            <div class="flex justify-center flex-wrap gap-2 mb-10" id="skillTabs">
+                <button data-skill-cat="all" class="pill-tab active cursor-pointer">All Competencies</button>
+                <button data-skill-cat="ai" class="pill-tab inactive cursor-pointer">AI & Workflows</button>
+                <button data-skill-cat="frontend" class="pill-tab inactive cursor-pointer">Frontend & Web</button>
+                <button data-skill-cat="backend" class="pill-tab inactive cursor-pointer">Backend & APIs</button>
+                <button data-skill-cat="devops" class="pill-tab inactive cursor-pointer">DevOps & Cloud</button>
+                <button data-skill-cat="db" class="pill-tab inactive cursor-pointer">Databases</button>
+                <button data-skill-cat="leadership" class="pill-tab inactive cursor-pointer">Leadership & IT Ops</button>
+            </div>
+
+            <!-- Skills Dynamic Grid -->
+            <div id="skillsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <!-- Dynamically Populated with rich icons and proficiency -->
+            </div>
+
+        </section>
+
+
+        <!-- ================= ACADEMIC CREDENTIALS ================= -->
+        <section id="education" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="glass-card spotlight-card p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute -right-16 -top-16 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-slate-200 dark:border-white/10">
+                    <div>
+                        <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-widest font-code">Academic Foundation</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Bachelor of Science in Information Technology</h2>
+                        <p class="text-sm font-semibold text-slate-600 dark:text-slate-300 mt-1">Pampanga State Agricultural University (PSAU)</p>
+                    </div>
+                    <span class="px-4 py-2 rounded-xl neo-btn font-code text-xs font-bold text-cyan-600 dark:text-cyan-300 flex items-center gap-2">
+                        <i class="fas fa-graduation-cap text-cyan-500 dark:text-cyan-400"></i>
+                        <span>2011 – 2015</span>
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 text-xs text-slate-600 dark:text-slate-300">
+                    <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5">
+                        <span class="font-bold text-slate-900 dark:text-white block mb-1 text-sm"><i class="fas fa-code text-cyan-500 dark:text-cyan-400 mr-2"></i> Software Engineering</span>
+                        Deep theoretical foundations in algorithm design, data structures, and object-oriented software engineering.
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5">
+                        <span class="font-bold text-slate-900 dark:text-white block mb-1 text-sm"><i class="fas fa-database text-indigo-500 dark:text-indigo-400 mr-2"></i> Relational Systems</span>
+                        Database modeling, query optimization, enterprise relational mapping, and network topologies.
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5">
+                        <span class="font-bold text-slate-900 dark:text-white block mb-1 text-sm"><i class="fas fa-server text-emerald-500 dark:text-emerald-400 mr-2"></i> Infrastructure & Hardware</span>
+                        Computer systems servicing, server configurations, operating systems, and network routing.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= GET IN TOUCH (CONTACT) ================= -->
+        <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-500 dark:text-cyan-400 font-code">Direct Communication</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Let’s Connect & Collaborate</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-3">Interested in enterprise architecture, supervisory consultation, or technical inquiries? Reach out directly.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Contact Direct Cards (Left) -->
+                <div class="lg:col-span-5 space-y-4">
+                    
+                    <!-- Email Card -->
+                    <div class="glass-card spotlight-card p-5 flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 dark:text-cyan-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Direct Email</span>
+                                <a href="mailto:christiand.chan26@gmail.com" class="text-sm font-bold text-slate-900 dark:text-white hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors block">
+                                    christiand.chan26@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('christiand.chan26@gmail.com', this)" class="w-9 h-9 rounded-lg neo-btn flex items-center justify-center text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 cursor-pointer" title="Copy Email">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="glass-card spotlight-card p-5 flex items-center justify-between group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mobile Phone</span>
+                                <a href="tel:+639757772512" class="text-sm font-bold text-slate-900 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors block">
+                                    +63 975 777 2512
+                                </a>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('+639757772512', this)" class="w-9 h-9 rounded-lg neo-btn flex items-center justify-center text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 cursor-pointer" title="Copy Phone">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="glass-card spotlight-card p-5 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-500 dark:text-rose-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Location Base</span>
+                            <span class="text-sm font-bold text-slate-900 dark:text-white block">
+                                Camias, Magalang, Pampanga, PH
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Guarantee Badge -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-indigo-950/40 dark:to-cyan-950/40 border border-slate-200 dark:border-white/10 text-xs text-slate-600 dark:text-slate-300 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-500 dark:text-cyan-400 flex items-center justify-center text-sm shrink-0">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <span class="font-bold text-slate-900 dark:text-white block">Swift Response Guaranteed</span>
+                            <span>Direct technical inquiries answered promptly within 24 business hours.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Form Card (Right) -->
+                <div class="lg:col-span-7 glass-card p-8 border border-slate-200 dark:border-white/10 shadow-2xl">
+                    <form id="contactForm" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="cName" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Your Name</label>
+                                <input type="text" id="cName" required placeholder="Alex Rivera" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all">
+                            </div>
+                            <div>
+                                <label for="cEmail" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Your Email</label>
+                                <input type="email" id="cEmail" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="cSubject" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Subject / System Type</label>
+                            <input type="text" id="cSubject" placeholder="Enterprise ERP, Fleet Logistics, or Supervisory Consultation" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all">
+                        </div>
+
+                        <div>
+                            <label for="cMessage" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Your Message</label>
+                            <textarea id="cMessage" rows="4" required placeholder="Describe your architecture requirements, project goals, or consultation inquiries..." class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="far fa-paper-plane"></i>
+                            <span>Send Message to Christian</span>
+                        </button>
+                    </form>
+
+                    <div id="formAlert" class="hidden mt-4 p-4 rounded-xl text-xs sm:text-sm font-semibold text-center border"></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="mt-20 border-t border-slate-200 dark:border-white/10 py-10 relative z-10 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-lg aurora-glow flex items-center justify-center font-code font-bold text-white text-xs">CD</span>
+                <span>&copy; <span id="year"></span> Christian Dimatulac. All rights reserved.</span>
+            </div>
+            <div class="font-code text-cyan-600 dark:text-cyan-400 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                <span>Hausland Group Web Development Leadership</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= SYSTEM DETAILS MODAL ================= -->
+    <div id="systemModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xl transition-all">
+        <div class="glass-card max-w-3xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto border border-slate-200 dark:border-white/20 shadow-2xl">
+            <button id="closeModal" aria-label="Close modal" class="absolute top-5 right-5 w-9 h-9 rounded-xl neo-btn flex items-center justify-center text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors cursor-pointer">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- ================= INTERACTIVE SCRIPTS ================= -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark / Light Theme Toggle (Default: Dark Mode)
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        function updateThemeUI() {
+            if (htmlElement.classList.contains('light')) {
+                themeIcon.className = 'fas fa-moon text-slate-700';
+            } else {
+                themeIcon.className = 'fas fa-sun text-amber-400';
+            }
+        }
+
+        // Initialize: Dark Mode is strictly default
+        const currentTheme = localStorage.getItem('portfolio_theme');
+        if (currentTheme === 'light') {
+            htmlElement.classList.remove('dark');
+            htmlElement.classList.add('light');
+        } else {
+            htmlElement.classList.add('dark');
+            htmlElement.classList.remove('light');
+            localStorage.setItem('portfolio_theme', 'dark');
+        }
+        updateThemeUI();
+
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                localStorage.setItem('portfolio_theme', 'light');
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                localStorage.setItem('portfolio_theme', 'dark');
+            }
+            updateThemeUI();
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileLinks.forEach(l => l.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        }));
+
+        // Spotlight Mouse Effect on Spotlight Cards
+        document.addEventListener('mousemove', (e) => {
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 1-Click Clipboard Copy Functionality
+        function copyToClipboard(text, triggerElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalHtml = triggerElement.innerHTML;
+                triggerElement.classList.add('border-emerald-400', 'text-emerald-400');
+                triggerElement.innerHTML = `<i class="fas fa-check text-emerald-400"></i> <span class="text-emerald-400">Copied!</span>`;
+                setTimeout(() => {
+                    triggerElement.innerHTML = originalHtml;
+                    triggerElement.classList.remove('border-emerald-400', 'text-emerald-400');
+                }, 2000);
+            }).catch(err => {
+                console.error('Copy failed: ', err);
+            });
+        }
+
+        // Enterprise Systems & Web Projects Data
+        const projects = [
+            {
+                id: 'erp',
+                title: 'Hausland Enterprise ERP System',
+                category: 'enterprise',
+                badge: 'Enterprise Solution',
+                metric: 'Multi-Department Scale',
+                summary: 'Comprehensive Enterprise Resource Planning platform overseeing corporate deployment, departmental integration, and organization-wide adoption.',
+                details: 'Served as the lead supervisory implementer for the Hausland ERP platform. Coordinated database normalization across departments, role-based authorization hierarchies, executive financial reporting, and operational task orchestration.',
+                tags: ['PHP', 'React', 'MySQL', 'Docker', 'Tailwind CSS', 'REST API'],
+                icon: 'fas fa-cubes-stacked text-cyan-500 dark:text-cyan-400'
+            },
+            {
+                id: 'hillsofglory',
+                title: 'Hills of Glory Web Platform',
+                category: 'web',
+                badge: 'Live Production Platform',
+                metric: 'Supabase • Cloudflare',
+                url: 'https://hillsofglory.org/',
+                image: 'assets/hillsofglory-screenshot.jpg',
+                screenshots: [
+                    {
+                        url: 'assets/hillsofglory-screenshot.jpg',
+                        title: 'Official Homepage & Worship Portal',
+                        desc: 'Hero experience with dynamic service schedules, weekly gathering times, sermon media highlights, and scroll-reveal transitions.'
+                    },
+                    {
+                        url: 'assets/hillsofglory-events.jpg',
+                        title: 'Live Events & Gathering Schedules',
+                        desc: 'Real-time church events, youth and discipleship conferences, and community outreach scheduling powered by Supabase.'
+                    },
+                    {
+                        url: 'assets/hillsofglory-ministries.jpg',
+                        title: 'Ministries & Discipleship Directory',
+                        desc: 'Comprehensive ministry hubs (Praise & Worship, Children, Youth/Campus, Outreach) with responsive mobile-first navigation.'
+                    }
+                ],
+                summary: 'Official public web platform for Hills of Glory International Christian Center featuring Supabase real-time database, dynamic event schedules, ministry directories, and responsive mobile architecture.',
+                details: 'Architected and developed the public web platform for Hills of Glory International Christian Center Inc. in Magalang, Pampanga. Features Supabase cloud database integration for live church events and announcements, ministries and discipleship portals, online giving modules, custom scroll-reveal animations, Lucide iconography, and global high-availability CDN deployment on Cloudflare.',
+                tags: ['JavaScript', 'Supabase', 'Cloudflare', 'HTML5/CSS3', 'Lucide Icons', 'jQuery'],
+                icon: 'fas fa-church text-amber-500 dark:text-amber-400'
+            },
+            {
+                id: 'fleet',
+                title: 'Real-Time Fleet Management System',
+                category: 'enterprise',
+                badge: 'Enterprise Solution',
+                metric: '100+ Vehicles Monitored',
+                image: 'assets/fleet-dashboard.png',
+                screenshots: [
+                    {
+                        url: 'assets/fleet-dashboard.png',
+                        title: 'Live Operational Fleet Dashboard',
+                        desc: 'Real-time vehicle availability (7 available, 2 maintenance), PMS alerts, compliance expirations (LTO / Driver license), and total fleet expense auditing.'
+                    },
+                    {
+                        url: 'assets/fleet-login.png',
+                        title: 'Mission Control Authentication Portal',
+                        desc: 'Secure enterprise gateway for Hausland Fleet Communication Management Division with role-based security, dispatch requests, and workshop job orders.'
+                    }
+                ],
+                summary: 'Engineered fleet management system tracking vehicle utilization, predictive maintenance schedules, driver dispatch, and fuel efficiency.',
+                details: 'Designed and deployed an end-to-end fleet operations platform for Hausland Holdings Inc. Automates vehicle inspection logs, maintenance lifecycle alerts, driver shift assignments, compliance auditing, and upkeep expense analytics.',
+                tags: ['JavaScript', 'PHP', 'PostgreSQL', 'Bootstrap', 'REST APIs'],
+                icon: 'fas fa-truck-fast text-emerald-500 dark:text-emerald-400'
+            },
+            {
+                id: 'health',
+                title: 'Health Declaration & Remote DTR Portal',
+                category: 'internal',
+                badge: 'Internal Portal',
+                metric: 'Daily Attendance Auditing',
+                summary: 'Digitized health compliance monitoring and remote Daily Time Record (DTR) attendance verification platform.',
+                details: 'Engineered a secure portal for continuous employee daily health self-assessments and geofenced/remote DTR timestamp validation. Seamlessly integrated into corporate HR payroll pipelines.',
+                tags: ['React', 'Tailwind CSS', 'PHP', 'MySQL', 'Windows Server'],
+                icon: 'fas fa-clipboard-user text-indigo-500 dark:text-indigo-400'
+            },
+            {
+                id: 'mis',
+                title: 'MIS Service & IT Inventory Engine',
+                category: 'internal',
+                badge: 'Internal Portal',
+                metric: 'Automated Ticket Queue',
+                summary: 'Automated technical support ticketing, hardware lifecycle inventory, requisition approvals, and live service queues.',
+                details: 'Unified IT operations with automated ticket routing, asset depreciation tracking, purchase requisition lifecycles, and live service status queuing boards across Hausland facilities.',
+                tags: ['Electron', 'JavaScript', 'jQuery UI', 'Windows Server', 'MySQL'],
+                icon: 'fas fa-microchip text-amber-500 dark:text-amber-400'
+            },
+            {
+                id: 'claude-ai',
+                title: 'Claude AI Workflow Pipeline Automation',
+                category: 'ai',
+                badge: 'AI & Automation',
+                metric: '40% Team Velocity Boost',
+                summary: 'Engineered Claude LLM integration and prompt pipelines into internal dev and ticketing workflows for automated tasks.',
+                details: 'Pioneered custom AI automation using the Claude API, prompt orchestration scripts, automated code review linting, and automated ticket resolution bots—greatly accelerating development throughput.',
+                tags: ['Claude AI', 'Prompt Engineering', 'Node.js', 'Docker', 'LLM Automation'],
+                icon: 'fas fa-brain text-purple-500 dark:text-purple-400'
+            },
+            {
+                id: 'docker-infra',
+                title: 'Docker Containerized Multi-Environment Stack',
+                category: 'infra',
+                badge: 'DevOps & Infra',
+                metric: 'Zero Environment Drift',
+                summary: 'Containerized staging, testing, and production environments for enterprise web services on Windows Server.',
+                details: 'Created standardized Docker Compose infrastructures across Windows Server and Linux machines, simplifying CI/CD staging, server provisioning, and containerized database replication.',
+                tags: ['Docker', 'Docker Compose', 'Windows Server', 'IIS', 'Git'],
+                icon: 'fab fa-docker text-blue-500 dark:text-blue-400'
+            }
+        ];
+
+        const projectsGrid = document.getElementById('projectsGrid');
+        const projectFilterBtns = document.querySelectorAll('#projectFilters button');
+
+        function renderProjects(filter = 'all') {
+            projectsGrid.innerHTML = '';
+            const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'glass-card spotlight-card p-6 flex flex-col justify-between cursor-pointer group hover:border-cyan-500/40';
+                card.onclick = () => openSystemModal(p.id);
+
+                card.innerHTML = `
+                    <div>
+                        ${p.image ? `
+                            <div class="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-4 border border-slate-200 dark:border-white/10 group-hover:border-cyan-500/50 transition-colors bg-slate-900 shadow-sm">
+                                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover object-top filter brightness-[0.96] group-hover:scale-105 group-hover:brightness-100 transition-all duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                                <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md text-[10px] font-code font-bold bg-slate-900/85 text-cyan-300 border border-white/10 flex items-center gap-1.5 backdrop-blur-md">
+                                    <i class="fas fa-images text-[9px] text-cyan-400"></i> Interface Screenshots
+                                </span>
+                            </div>
+                        ` : ''}
+
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-bold font-code bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-300">
+                                ${p.badge}
+                            </span>
+                            <span class="text-[11px] font-code text-slate-500 dark:text-slate-400 flex items-center gap-1 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                                <span>${p.metric}</span>
+                                <i class="fas fa-arrow-up-right-from-square text-[10px] ml-1"></i>
+                            </span>
+                        </div>
+
+                        <div class="flex items-start gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 flex items-center justify-center text-lg shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="${p.icon}"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors leading-snug">
+                                    ${p.title}
+                                </h3>
+                                ${p.url ? `<span class="inline-flex items-center gap-1 text-[11px] text-cyan-600 dark:text-cyan-400 font-code font-semibold mt-0.5"><i class="fas fa-link text-[9px]"></i> ${p.url.replace('https://', '').replace('/', '')}</span>` : ''}
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-2 line-clamp-3">
+                            ${p.summary}
+                        </p>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-t border-slate-200 dark:border-white/10 flex flex-wrap gap-1.5">
+                        ${p.tags.map(t => `<span class="px-2 py-0.5 rounded text-[10px] font-code bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 font-semibold border border-slate-200 dark:border-transparent">${t}</span>`).join('')}
+                    </div>
+                `;
+                projectsGrid.appendChild(card);
+            });
+        }
+
+        projectFilterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                projectFilterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.classList.add('inactive');
+                });
+                const target = e.currentTarget;
+                target.classList.remove('inactive');
+                target.classList.add('active');
+                renderProjects(target.getAttribute('data-filter'));
+            });
+        });
+
+        renderProjects();
+
+        // Technical Skills Matrix Data
+        const skills = [
+            // AI
+            { name: 'Claude AI Workflow Integration', category: 'ai', icon: 'fas fa-brain text-purple-500 dark:text-purple-400', level: 'Pioneer' },
+            { name: 'LLM Prompt Engineering', category: 'ai', icon: 'fas fa-terminal text-cyan-500 dark:text-cyan-400', level: 'Advanced' },
+            { name: 'AI-Assisted Dev Pipelines', category: 'ai', icon: 'fas fa-wand-magic-sparkles text-indigo-500 dark:text-indigo-400', level: 'Specialist' },
+            
+            // Frontend
+            { name: 'React & Next.js', category: 'frontend', icon: 'fab fa-react text-sky-500 dark:text-sky-400', level: 'Senior' },
+            { name: 'Tailwind CSS & SASS', category: 'frontend', icon: 'fas fa-palette text-teal-500 dark:text-teal-400', level: 'Expert' },
+            { name: 'JavaScript (ES6+) & Modern Web', category: 'frontend', icon: 'fab fa-js text-amber-500 dark:text-amber-400', level: 'Senior' },
+            { name: 'Bootstrap & UI Frameworks', category: 'frontend', icon: 'fab fa-bootstrap text-purple-500 dark:text-purple-400', level: 'Expert' },
+            
+            // Backend
+            { name: 'PHP & MVC Frameworks', category: 'backend', icon: 'fab fa-php text-indigo-500 dark:text-indigo-400', level: 'Lead Architect' },
+            { name: 'Node.js & Express REST APIs', category: 'backend', icon: 'fab fa-node-js text-emerald-500 dark:text-emerald-400', level: 'Advanced' },
+            { name: 'Electron Desktop Apps', category: 'backend', icon: 'fas fa-desktop text-cyan-500 dark:text-cyan-400', level: 'Proficient' },
+            { name: 'Java & Android Dev', category: 'backend', icon: 'fab fa-android text-emerald-500', level: 'Foundational' },
+            
+            // DevOps & Cloud
+            { name: 'Docker Containerization', category: 'devops', icon: 'fab fa-docker text-blue-500 dark:text-blue-400', level: 'Advanced' },
+            { name: 'Windows Server & IIS Config', category: 'devops', icon: 'fas fa-server text-emerald-500 dark:text-emerald-400', level: 'Administrator' },
+            { name: 'Git & Version Control Workflows', category: 'devops', icon: 'fab fa-git-alt text-rose-500', level: 'Lead' },
+            
+            // Databases
+            { name: 'MySQL Relational Schema Design', category: 'db', icon: 'fas fa-database text-blue-500 dark:text-blue-400', level: 'Architect' },
+            { name: 'PostgreSQL & Query Tuning', category: 'db', icon: 'fas fa-cubes text-sky-500 dark:text-sky-400', level: 'Advanced' },
+            { name: 'Supabase Cloud Database', category: 'db', icon: 'fas fa-bolt text-emerald-500 dark:text-emerald-400', level: 'Proficient' },
+            
+            // Leadership & Ops
+            { name: 'Web Dev Team Supervision', category: 'leadership', icon: 'fas fa-user-shield text-cyan-500 dark:text-cyan-400', level: '7+ Years' },
+            { name: 'Enterprise ERP Implementation', category: 'leadership', icon: 'fas fa-network-wired text-indigo-500 dark:text-indigo-400', level: 'Lead Supervisor' },
+            { name: 'IT Asset & Helpdesk Operations', category: 'leadership', icon: 'fas fa-microchip text-amber-500 dark:text-amber-400', level: 'Expert' }
+        ];
+
+        const skillsGrid = document.getElementById('skillsGrid');
+        const skillTabs = document.querySelectorAll('#skillTabs button');
+
+        function renderSkills(cat = 'all') {
+            skillsGrid.innerHTML = '';
+            const filtered = cat === 'all' ? skills : skills.filter(s => s.category === cat);
+
+            filtered.forEach(s => {
+                const item = document.createElement('div');
+                item.className = 'glass-card spotlight-card p-4 flex items-center justify-between group';
+                item.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-white/10 flex items-center justify-center text-base shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="${s.icon}"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors block">${s.name}</span>
+                            <span class="text-[10px] font-code text-slate-500 dark:text-slate-400">${s.level}</span>
+                        </div>
+                    </div>
+                    <span class="w-2 h-2 rounded-full bg-cyan-400/50 group-hover:bg-cyan-400 group-hover:shadow-[0_0_8px_#22d3ee] transition-all"></span>
+                `;
+                skillsGrid.appendChild(item);
+            });
+        }
+
+        skillTabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                skillTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.add('inactive');
+                });
+                const target = e.currentTarget;
+                target.classList.remove('inactive');
+                target.classList.add('active');
+                renderSkills(target.getAttribute('data-skill-cat'));
+            });
+        });
+
+        renderSkills();
+
+        // System Modal Functionality
+        const modal = document.getElementById('systemModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+
+        function openSystemModal(id) {
+            const p = projects.find(item => item.id === id);
+            if (!p) return;
+
+            modalContent.innerHTML = `
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold font-code bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-300">${p.badge}</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-code">• ${p.metric}</span>
+                </div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 flex items-center justify-center text-xl shrink-0">
+                        <i class="${p.icon}"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">${p.title}</h3>
+                        ${p.url ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-cyan-600 dark:text-cyan-400 font-code font-semibold hover:underline mt-1"><i class="fas fa-external-link-alt text-[10px]"></i> ${p.url}</a>` : ''}
+                    </div>
+                </div>
+                <div class="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p class="font-medium text-slate-800 dark:text-slate-200">${p.summary}</p>
+                    <p class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/5">${p.details}</p>
+                </div>
+                ${p.screenshots ? `
+                    <div class="my-5 space-y-3">
+                        <h4 class="text-xs font-bold uppercase font-code tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                            <i class="fas fa-desktop text-cyan-500 dark:text-cyan-400"></i>
+                            <span>Production Screenshots & Interfaces</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            ${p.screenshots.map(s => `
+                                <div class="space-y-1.5 group">
+                                    <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="block relative aspect-video rounded-xl overflow-hidden border border-slate-200 dark:border-white/10 bg-slate-900 shadow-md">
+                                        <img src="${s.url}" alt="${s.title}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                                        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors"></div>
+                                        <span class="absolute bottom-2 right-2 px-2 py-1 rounded bg-slate-900/85 text-[10px] text-cyan-300 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 font-code">
+                                            <i class="fas fa-expand text-[9px]"></i> Expand
+                                        </span>
+                                    </a>
+                                    <div class="text-xs font-bold text-slate-900 dark:text-white">${s.title}</div>
+                                    <div class="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">${s.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+                <div class="mt-6 pt-5 border-t border-slate-200 dark:border-white/10">
+                    <h4 class="text-xs font-bold uppercase font-code tracking-wider text-slate-500 dark:text-slate-400 mb-2">Technical Architecture Stack</h4>
+                    <div class="flex flex-wrap gap-1.5">
+                        ${p.tags.map(t => `<span class="px-3 py-1 rounded-lg text-xs font-code bg-slate-100 dark:bg-slate-800 text-cyan-600 dark:text-cyan-300 font-semibold border border-slate-200 dark:border-white/5">${t}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 flex flex-wrap items-center justify-between gap-3">
+                    ${p.url ? `
+                        <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-bold text-xs flex items-center gap-2 transition-all">
+                            <i class="fas fa-external-link-alt text-[10px]"></i>
+                            <span>Visit Live Website</span>
+                        </a>
+                    ` : '<div></div>'}
+                    <button onclick="document.getElementById('systemModal').classList.add('hidden')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs cursor-pointer shadow-lg shadow-cyan-500/20">
+                        Close Overview
+                    </button>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.add('hidden');
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+            }
+        });
+
+        // Interactive AI Pipeline Simulator Scenarios
+        const aiScenarios = {
+            erp: {
+                cmd: 'erp-query-optimizer --target inventory_ledger',
+                output: `-- [HAUSLAND ERP QUERY OPTIMIZATION ENGINE] --
+Target Table: erp_inventory_ledger (850,000+ records)
+Bottleneck: Full table scan during cross-department valuation audits.
+
+OPTIMIZED COMPOSITE INDEX CREATED:
+CREATE INDEX idx_ledger_dept_date_status 
+ON erp_inventory_ledger (department_id, audit_date DESC, status_id) 
+INCLUDE (quantity, unit_cost);
+
+Claude AI Analysis:
+✓ Query latency reduced: 4.8s -> 42ms (-99.1%)
+✓ Buffer pool contention cleared across Hausland ERP cluster
+✓ Execution verified via EXPLAIN ANALYZE; zero table lockups.`
+            },
+            fleet: {
+                cmd: 'fleet-dispatch-optimizer --vehicle-cluster alpha',
+                output: `-- [FLEET MAINTENANCE DISPATCH ALGORITHM] --
+Monitoring: 100+ Commercial & Logistics Vehicles in Magalang / Pampanga
+
+ANALYSIS LOG:
+Unit #FLT-104: Distance = 9,840km | Engine Run Hours = 380 hrs
+Predictive Alert: Brake pad wear tolerance exceeded threshold (82%).
+
+DISPATCH DIRECTIVE GENERATED:
+1. Re-route Unit #FLT-104 to Magalang Central Maintenance Bay at 17:00.
+2. Substitute Unit #FLT-088 into Active Route: Camias -> City Dispatch.
+3. Automatically pre-ordered OEM brake kit in Hausland ERP Inventory.
+✓ Safety compliance score: 100% | Vehicle downtime averted.`
+            },
+            docker: {
+                cmd: 'dockerfile-generator --stack "php8.2-fpm + react + nginx"',
+                output: `-- [MULTI-STAGE CONTAINER BUILD GENERATION] --
+Target Architecture: Windows Server Docker Node / Linux Production Parity
+
+# Stage 1: Build React Assets
+FROM node:20-alpine AS frontend-builder
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm ci --silent && npm run build
+
+# Stage 2: Production PHP-FPM Service
+FROM php:8.2-fpm-alpine
+RUN docker-php-ext-install pdo pdo_mysql opcache
+COPY --from=frontend-builder /app/frontend/dist /var/www/html/public
+COPY backend/ /var/www/html/
+RUN chown -R www-data:www-data /var/www/html
+
+✓ Container Image Footprint: 84MB (Optimized from 650MB)`
+            },
+            mis: {
+                cmd: 'mis-triage-bot --inbox helpdesk_tickets',
+                output: `-- [MIS SUPPORT AUTO-TRIAGE & QUEUE DISPATCH] --
+Incoming Ticket #MIS-4821: "Intermittent connection on Accounting subnet B"
+
+NATURAL LANGUAGE PARSER VIA CLAUDE API:
+- Category: Network Infrastructure / Subnet Gateway
+- Urgency: High (Critical financial period)
+- Auto-Assigned Specialist: L3 Network Admin (Magalang On-Site)
+
+ACTION EXECUTED:
+1. Ping sweep triggered automatically on 192.168.14.0/24.
+2. Packet loss identified at Switch #3 Port 8.
+3. Automated WhatsApp/Email alert dispatched to Support Lead.
+✓ Time to first technical diagnosis: 1.4 seconds.`
+            }
+        };
+
+        const aiBtns = document.querySelectorAll('.ai-btn');
+        const terminalCommand = document.getElementById('terminalCommand');
+        const terminalStream = document.getElementById('terminalStream');
+
+        aiBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                aiBtns.forEach(b => {
+                    b.classList.remove('border-cyan-500/40', 'bg-cyan-500/10', 'text-white');
+                    b.classList.add('text-slate-300');
+                    b.querySelector('.fa-play').classList.remove('text-cyan-400');
+                    b.querySelector('.fa-play').classList.add('text-slate-500');
+                });
+
+                btn.classList.add('border-cyan-500/40', 'bg-cyan-500/10', 'text-white');
+                btn.classList.remove('text-slate-300');
+                btn.querySelector('.fa-play').classList.add('text-cyan-400');
+                btn.querySelector('.fa-play').classList.remove('text-slate-500');
+
+                const scenarioKey = btn.getAttribute('data-scenario');
+                const scenario = aiScenarios[scenarioKey];
+                if (!scenario) return;
+
+                terminalCommand.textContent = scenario.cmd;
+                terminalStream.textContent = 'Streaming Claude pipeline analysis...';
+                
+                setTimeout(() => {
+                    terminalStream.textContent = scenario.output;
+                }, 300);
+            });
+        });
+
+        // Contact Form Handling with Simulated Dispatch
+        const contactForm = document.getElementById('contactForm');
+        const formAlert = document.getElementById('formAlert');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const senderName = document.getElementById('cName').value;
+            
+            // Interactive Loading State
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> <span>Transmitting Message...</span>`;
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="far fa-paper-plane"></i> <span>Send Message to Christian</span>`;
+                
+                formAlert.className = 'mt-4 p-4 rounded-xl text-xs sm:text-sm font-semibold text-center bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 block';
+                formAlert.innerHTML = `<i class="fas fa-circle-check text-emerald-500 dark:text-emerald-400 mr-1.5"></i> Thank you, <strong>${senderName}</strong>! Your message has been received. Christian Dimatulac will reply shortly.`;
+                
+                contactForm.reset();
+                setTimeout(() => {
+                    formAlert.className = 'hidden';
+                }, 6000);
+            }, 1200);
+        });
+    </script>
+</body>
+</html>
